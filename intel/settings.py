@@ -67,14 +67,14 @@ INSTALLED_APPS = [
 
 JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
-    "site_title": "Gh Recharge Hub",
-    "site_header": "Gh Recharge Hub",
+    "site_title": "InternetHUB",
+    "site_header": "InternetHUB",
     # "site_logo": "img/site/bestPay Logo.png",
     # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_brand": "Gh Recharge Hub",
-    "copyright": "Gh Recharge Hub",
+    "site_brand": "InternetHUB",
+    "copyright": "InternetHUB",
     # "login_logo": "img/site/bp.png",
-    "welcome_sign": "Welcome to the Gh Recharge Hub Admin",
+    "welcome_sign": "Welcome to the InternetHUB Admin",
     "custom_css": 'css/admin.css',
     "user_avatar": 'user',
 }
