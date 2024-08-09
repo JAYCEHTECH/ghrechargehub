@@ -4,6 +4,7 @@ from .models import CustomUser
 from . import models
 from django.contrib.admin.widgets import FilteredSelectMultiple
 
+
 class CustomUserForm(UserCreationForm):
     first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -19,7 +20,8 @@ class CustomUserForm(UserCreationForm):
 
 
 class IShareBundleForm(forms.Form):
-    phone_number = forms.IntegerField(widget=forms.NumberInput(attrs={'class': 'form-control phone', 'placeholder': '0270000000'}))
+    phone_number = forms.IntegerField(
+        widget=forms.NumberInput(attrs={'class': 'form-control phone', 'placeholder': '0270000000'}))
     offers = forms.ModelChoiceField(queryset=None, to_field_name='price', empty_label=None,
                                     widget=forms.Select(attrs={'class': 'form-control airtime-input'}))
 
@@ -32,12 +34,13 @@ class IShareBundleForm(forms.Form):
         elif status == "Super Agent":
             self.fields['offers'].queryset = models.SuperAgentIshareBundlePrice.objects.all()
         # self.fields['size'].queryset = models.Size.objects.filter(domain=domain)
-            
+
 
 class MTNForm(forms.Form):
-    phone_number = forms.IntegerField(widget=forms.NumberInput(attrs={'class': 'form-control mtn-phone', 'placeholder': '0200000000'}))
+    phone_number = forms.IntegerField(
+        widget=forms.NumberInput(attrs={'class': 'form-control mtn-phone', 'placeholder': '0200000000'}))
     offers = forms.ModelChoiceField(queryset=None, to_field_name='price', empty_label=None,
-                               widget=forms.Select(attrs={'class': 'form-control mtn-offer'}))
+                                    widget=forms.Select(attrs={'class': 'form-control mtn-offer'}))
 
     def __init__(self, status, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -51,8 +54,10 @@ class MTNForm(forms.Form):
 
 
 class CreditUserForm(forms.Form):
-    user = forms.ModelChoiceField(queryset=models.CustomUser.objects.all().order_by('username'), to_field_name='username', empty_label=None,
-                                  widget=forms.Select(attrs={'class': 'form-control airtime-input', 'id': 'user_select'}))
+    user = forms.ModelChoiceField(queryset=models.CustomUser.objects.all().order_by('username'),
+                                  to_field_name='username', empty_label=None,
+                                  widget=forms.Select(
+                                      attrs={'class': 'form-control airtime-input', 'id': 'user_select'}))
     amount = forms.FloatField(widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'GHS 100'}))
 
 
@@ -60,7 +65,8 @@ class AFARegistrationForm(forms.ModelForm):
     name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control name'}))
     phone_number = forms.IntegerField(
         widget=forms.NumberInput(attrs={'class': 'form-control phone', 'placeholder': '0240000000'}))
-    gh_card_number = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control card', 'placeholder': 'GHA-XXXXXXXXXXX-X'}))
+    gh_card_number = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control card', 'placeholder': 'GHA-XXXXXXXXXXX-X'}))
     occupation = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control occ'}))
     date_of_birth = forms.CharField(
         widget=forms.DateInput(attrs={'class': 'form-control birth', 'type': 'date'}))
@@ -72,8 +78,10 @@ class AFARegistrationForm(forms.ModelForm):
 
 
 class BigTimeBundleForm(forms.Form):
-    phone_number = forms.IntegerField(widget=forms.NumberInput(attrs={'class': 'form-control phone', 'placeholder': '0270000000'}))
-    offers = forms.ModelChoiceField(queryset=models.BigTimeBundlePrice.objects.all().order_by('price'), to_field_name='price', empty_label=None,
+    phone_number = forms.IntegerField(
+        widget=forms.NumberInput(attrs={'class': 'form-control phone', 'placeholder': '0270000000'}))
+    offers = forms.ModelChoiceField(queryset=models.BigTimeBundlePrice.objects.all().order_by('price'),
+                                    to_field_name='price', empty_label=None,
                                     widget=forms.Select(attrs={'class': 'form-control airtime-input'}))
 
     def __init__(self, status, *args, **kwargs):

@@ -21,6 +21,7 @@ class CustomUser(AbstractUser):
     password2 = models.CharField(max_length=100, null=False, blank=False)
 
 
+
     def __str__(self):
         return self.username
 
@@ -38,6 +39,7 @@ class AdminInfo(models.Model):
     payment_channel = models.CharField(max_length=250, choices=choices)
     afa_price = models.FloatField(null=True, blank=True)
     mtn_api_status = models.BooleanField(default=True)
+    user_id = models.CharField(max_length=250, null=True, blank=True)
 
 
 class IShareBundleTransaction(models.Model):

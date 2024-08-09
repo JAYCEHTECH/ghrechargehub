@@ -31,6 +31,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
+    'localhost',
     'gh-recharge-hub-m6qlm.ondigitalocean.app',
     'reseller.internethub.site',
     'www.hubnet.app',
